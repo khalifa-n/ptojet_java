@@ -17,7 +17,7 @@ public interface IService {
     public void ajouterPavillon(Pavillon pavillon);
     public void ajouterPavillon(Pavillon pavillon,ArrayList<Chambre> chambres);
 
-    public Chambre rechercherPavillon(int id);
+    public Pavillon rechercherPavillon(int id);
     public void modifierPavillo(Pavillon pavillon);
     public void listerPavillon();
     public void archiverPavillon(Pavillon pavillon);

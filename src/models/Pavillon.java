@@ -8,6 +8,9 @@ public class Pavillon {
     private int nbrEtage;
     private static int nbr;
     private ArrayList<Chambre> chambres=new ArrayList<>();
+    public Pavillon(int id) {
+        this.id = id;
+    }
     public Pavillon() {
         nbr++;
         id=nbr;
@@ -39,6 +42,17 @@ public class Pavillon {
     @Override
     public String toString() {
         return "chambres=" + chambres + ", id=" + id + ", nbrEtage=" + nbrEtage + ", num=" + num ;
+    }
+    public ArrayList<Chambre> getChambres() {
+        return chambres;
+    }
+    public void setChambres(ArrayList<Chambre> chambres) {
+        this.chambres = chambres;
+    }
+    @Override
+    public boolean equals(Object obj) {
+       return ((Pavillon)obj).getId()==this.id;
+
     }
     
 }

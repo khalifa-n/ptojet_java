@@ -17,10 +17,11 @@ public class ServiceList implements IService {
 
     @Override
     public void ajouterChambre(Chambre chambre, Pavillon pavillon) {
-        //affecter une chambre a un pavilon
         
-        //pavillon vers chambre
-        
+                //affecter une chambre a un pavilon
+        chambre.setPavillon(pavillon);
+                //pavillon vers chambre
+        pavillon.getChambres().add(chambre);
         bdChambres.add(chambre);     
 
     }
@@ -29,26 +30,30 @@ public class ServiceList implements IService {
 
     @Override
     public Chambre rechercherChambre(int id) {
+        Chambre ch = new Chambre(id);
+
         for (Chambre chambre : bdChambres) {
-            Chambre ch = new Chambre();
-            if (chambre.equals(ch()) {
+            if (chambre.equals(ch)) {
                 return chambre;
             }
-            
-        }
-        return null;
     }
+    return null;
+}
 
     @Override
     public void modifierChambre(Chambre chambre) {
-        // TODO Auto-generated method stub
-        
+        for (int index = 0; index < bdChambres.size(); index++) {
+            if ( bdChambres.get(index).equals(chambre)) {
+                bdChambres.set(index, chambre);
+            }
+        }        
     }
 
     @Override
     public void listerChambre() {
-        // TODO Auto-generated method stub
-        
+           for (Chambre chambre : bdChambres) {
+               System.out.println(chambre);
+           }
     }
 
     @Override
@@ -59,32 +64,41 @@ public class ServiceList implements IService {
 
     @Override
     public void ajouterPavillon(Pavillon pavillon) {
-        // TODO Auto-generated method stub
-        
+        bdPavillons.add(pavillon);        
     }
 
     @Override
     public void ajouterPavillon(Pavillon pavillon, ArrayList<Chambre> chambres) {
-        // TODO Auto-generated method stub
-        
+                bdPavillons.add(pavillon);
+                pavillon.getChambres().addAll(chambres);
+                bdPavillons.add(pavillon);
     }
 
     @Override
-    public Chambre rechercherPavillon(int id) {
-        // TODO Auto-generated method stub
-        return null;
+    public Pavillon rechercherPavillon(int id) {
+        Pavillon pav= new Pavillon(id);
+        for (Pavillon pavillon : bdPavillons) {
+            if (pavillon.equals(pav)) {
+                return pavillon;
+            }
+        }
+        return null ;
     }
 
     @Override
     public void modifierPavillo(Pavillon pavillon) {
-        // TODO Auto-generated method stub
-        
+        for (int i = 0; i < bdPavillons.size(); i++) {
+            if (bdPavillons.get(i).equals(pavillon)) {
+                bdPavillons.set(i, pavillon);
+            }
+        }        
     }
 
     @Override
     public void listerPavillon() {
-        // TODO Auto-generated method stub
-        
+        for (Pavillon pavillon : bdPavillons) {
+            System.out.println(pavillon);
+        }        
     }
 
     @Override
